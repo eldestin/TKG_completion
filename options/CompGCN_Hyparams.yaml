@@ -1,0 +1,32 @@
+log_name: CompGCN_ICEWs
+
+Val:
+  val_bs: 128
+Test:
+  test_bs: 128
+
+
+val_ckpt_path: 
+RESUME: False
+resume_checkpoint_path:
+Trainer:
+  dataset: 'ICEWS14_forecasting'
+  check_val_every_n_epoch: 4
+  accumulate_grad_batches: 1
+  max_epochs: 40
+  accelerator: 'gpu'
+  devices: [0]
+  precision: '32'
+  initlr: 0.001
+  num_workers: 8
+  train_bs: 256
+  log_every_n_step: 4
+
+
+ 
+Model:
+  settings:
+    in_channel: 50
+    out_channel: 100
+    num_basis_vector: 32
+    comp_type: 'sub'

@@ -1,0 +1,33 @@
+log_name: TransE_YAGO
+loss_params:
+  margin: 1
+  norm: 2
+
+Val:
+  val_bs: 1024
+Test:
+  test_bs: 1024
+
+
+val_ckpt_path: 
+RESUME: False
+resume_checkpoint_path:
+Trainer:
+  dataset: 'YAGO1830'
+  check_val_every_n_epoch: 4
+  accumulate_grad_batches: 1
+  max_epochs: 20
+  accelerator: 'gpu'
+  devices: [0]
+  precision: '32'
+  initlr: 0.01
+  num_workers: 8
+  train_bs: 1024
+  log_every_n_step: 4
+
+
+ 
+Model:
+  settings:
+    embed_dim: 100
+   
